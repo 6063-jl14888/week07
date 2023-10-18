@@ -7,9 +7,31 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
+  mImg.resize(0, height)
+  print(mImg.pixels.length);
+  noLoop();
+  
 }
 
 function draw() {
   background(220, 20, 120);
-  image(mImg, 0, 0);
+
+  mImg.loadPixels();
+
+  for(let vi = 0; vi<mImg.pixels.length; vi += 4){
+    let redVal = mImg.pixels[vi+0];
+    let greenVal = mImg.pixel[vi+1];
+    let blueVal = mImg.pixels[vi+2];
+    let alphaVal = mImg.pixels[vi+3];
+
+    let maxVal = max(redVal, greenVal, blueVal);
+
+    if (maxVal == blueVal){
+      mImg.pixels[vi+3] = 0;
+
+  }
 }
+  mImg.updatePixels();
+  image(mImg, (width-mImg.width)/2, 0);
+}
+
