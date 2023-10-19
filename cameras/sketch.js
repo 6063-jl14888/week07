@@ -10,4 +10,5 @@ function setup() {
 function draw() {
   background(220, 20, 120);
   image(mCamera, 0, 0);
+
 }
